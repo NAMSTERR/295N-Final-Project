@@ -1,21 +1,21 @@
 ﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using ShipmentTrackingSite.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ShipmentTrackingSite.Data;
 
 namespace ShipmentTrackingSite.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    private readonly ILogger<HomeController> _logger;
+    IOrderRepository repo;
+
+    public HomeController(ILogger<HomeController> logger, IOrderRepository r)
     {
         _logger = logger;
-    }
-
-    public IActionResult Index()
-    {
-        return View();
+        repo = r;
     }
 
     public IActionResult Privacy()
@@ -28,5 +28,53 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+    [HttpGet]
+    public IActionResult Index()
+    {
+        //ViewBag.FV = 0;
+        return View();
+    }
+
+    [HttpGet]
+    public IActionResult Add()
+    {
+        //ViewBag.FV = 0;
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Add(Order model)
+    {
+        //ViewBag.FV = 0;
+        if (ModelState.IsValid)
+        {
+            return View(model);
+        }
+        return View();
+
+    }
+
+    [HttpPost]
+    public IActionResult Index(Order model)
+    {
+        if (ModelState.IsValid)
+        {
+            ViewBag.FV = model;
+        }
+        else
+        {
+            ViewBag.FV = 0;
+        }
+        return View(model);
+    }
+
+    //public Message GetMessageById(int messId)
+    //{
+    //    var message = context.Messages.Include(message => message.Users).Where(message => message.MessageId == messId).SingleOrDefault();
+    //    return message;
+    //}
+
+
 }
 

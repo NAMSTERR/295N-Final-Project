@@ -1,9 +1,33 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model Order
+@{
+    ViewBag.Title = ViewData["Title"] = "Home Page";
+
+    // create culture variable
+    //    var culture = System.Globalization.CultureInfo
+    //.CreateSpecificCulture("en-US");
+
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <p>
+        Learn about <a href="https://leichtag.org/7-things-can-address-hunger-community/">
+            how you we help counter hunger in your community with your help
+        </a>.
+    </p>
+    <br>
+    <h2>Track Your Orders</h2>
+    <p>
+        A census conducted by the Oregon Department of Human Services in 2009 showed that
+        of the 343,100 residents in Lane County, 49,357 rely on food stamps. Many residents
+        living in Lane County struggle to provide for themselves and their families. In many
+        parts of Oregon the production of food is switching from mainstream distribution
+        through industries to local food sourcing.
+    </p>
+    <br>
+    <hr />
+    <a href="/Home/Add">Add Shipment</a><br />
+    @*<a href="/Info/Link">LINKS</a> <br />*@
 
+</div>
+<hr />

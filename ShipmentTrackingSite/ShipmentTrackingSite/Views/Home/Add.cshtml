@@ -1,0 +1,52 @@
+﻿@model Order
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h2>New Shipment</h2>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-action="Add" method="post">
+
+    <div class="form-group">
+        <label asp-for="Description">Description:</label>
+        <input type="text" asp-for="Description" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderedFrom">Order from:</label>
+        <input type="text" asp-for="OrderedFrom" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Carrier">Carrier:</label>
+        <input type="text" asp-for="Carrier" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderPlacedDate">Order placed date:</label>
+        <input type="date" asp-for="OrderPlacedDate" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DeliveryDate">Order delivery date:</label>
+        <input type="date" asp-for="DeliveryDate" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Cost" class="control-label pt-1">Cost:</label>
+        <input asp-for="Cost" type="number" step="0.01" class="form-control mb-2" placeholder="0.00" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ShipmentFee" class="control-label pt-1">Shipment fee:</label>
+        <input asp-for="ShipmentFee" type="number" step="0.01" class="form-control mb-2" placeholder="0.00" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+    <a asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>
+
