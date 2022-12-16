@@ -14,6 +14,7 @@
     <None Remove="MySql.EntityFrameworkCore" />
     <None Remove="Pomelo.EntityFrameworkCore.MySql" />
     <None Remove="Data\" />
+    <None Remove="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="5.2.3" />
@@ -25,6 +26,7 @@
     </PackageReference>
     <PackageReference Include="MySql.EntityFrameworkCore" Version="6.0.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />

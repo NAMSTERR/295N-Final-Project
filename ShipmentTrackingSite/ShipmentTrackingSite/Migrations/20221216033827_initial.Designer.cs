@@ -11,7 +11,7 @@ using ShipmentTrackingSite.Data;
 namespace ShipmentTrackingSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221215045204_initial")]
+    [Migration("20221216033827_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
