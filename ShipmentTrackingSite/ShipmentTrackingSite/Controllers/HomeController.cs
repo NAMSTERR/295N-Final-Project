@@ -33,8 +33,12 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         //ViewBag.FV = 0;
-        return View();
+        //return RedirectToAction("OrderTable");
+        List<Order> orders = repo.Orders.ToList<Order>();
+
+        return View(orders);
     }
+
 
     [HttpGet]
     public IActionResult Add()
@@ -46,34 +50,42 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Add(Order model)
     {
+
         //ViewBag.FV = 0;
         if (ModelState.IsValid)
         {
-            return View(model);
-        }
-        return View();
-
-    }
-
-    [HttpPost]
-    public IActionResult Index(Order model)
-    {
-        if (ModelState.IsValid)
-        {
-            ViewBag.FV = model;
+            model = repo.AddToDb(model);
         }
         else
         {
-            ViewBag.FV = 0;
+            return RedirectToAction("Add");
         }
-        return View(model);
+
+        return RedirectToAction("Index", new { orderId = model.OrderId });
     }
+
+    //[HttpPost]
+    //public IActionResult Index(Order model)
+    //{
+    //    if (ModelState.IsValid)
+    //    {
+    //        ViewBag.FV = model;
+    //    }
+    //    else
+    //    {
+    //        ViewBag.FV = 0;
+    //    }
+    //    return View(model);
+    //}
 
     //public Message GetMessageById(int messId)
     //{
     //    var message = context.Messages.Include(message => message.Users).Where(message => message.MessageId == messId).SingleOrDefault();
     //    return message;
     //}
+
+
+
 
 
 }

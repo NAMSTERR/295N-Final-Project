@@ -39,20 +39,6 @@ namespace ShipmentTrackingSite.Models
         [Required(ErrorMessage = "Please enter the shipment fee.")]
         public Decimal? ShipmentFee { get; set; }
 
-        //public bool? IsNullOrNot()
-        //{
-        //    if (Description == null || OrderedFrom == null
-        //         || Carrier == null || OrderPlacedDate == null
-        //         || DeliveryDate == null || Cost == null || ShipmentFee == null)
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return true;
-        //    }
-        //}
-
 
     }
 }

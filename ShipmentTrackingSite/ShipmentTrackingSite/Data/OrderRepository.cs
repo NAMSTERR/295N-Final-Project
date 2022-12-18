@@ -13,6 +13,14 @@ namespace ShipmentTrackingSite.Data
             context = aDbC;
         }
 
+        public IQueryable<Order> Orders
+        {
+            get
+            {
+                return context.Orders;
+            }
+        }
+
         public Order AddOrder()
         {
             throw new NotImplementedException();
@@ -25,10 +33,6 @@ namespace ShipmentTrackingSite.Data
 
             return addIt;
         }
-
-
-
-
     }
 }
 

@@ -1,33 +1,88 @@
-﻿@model Order
+﻿@model List<Order>
 @{
     ViewBag.Title = ViewData["Title"] = "Home Page";
 
-    // create culture variable
-    //    var culture = System.Globalization.CultureInfo
-    //.CreateSpecificCulture("en-US");
+    bool DeliveredOrNah(Order order)
+    {
+        if (order.DeliveryDate < DateTime.Now)
+        {
+            //string Overdue(ToDo task) => task.Overdue ? "bg-warning" : "";
+            return true;
+        }
 
+        return false;
+    }
+}
+<br />
+<h6 class="">
+</h6>
+<p>
+    <i>We are happy to have you here today, to witness a new style of online order tracking system.</i>
+    <i>
+        This is version 0.1 of the <strong>Shipify</strong> web application. Stay tuned for version 0.2 and experience
+        a new automated system that pull's data from a tracking number, instead of having to input multiple fileds.
+    </i>
+    <br>
+
+    <br />
+</p>
+
+<hr />
+
+<br />
+
+@if (@Model != null)
+{
+    <h2> <strong>| Orders&#128230; |</strong> </h2>
+
+    <div class="col-sm-13">
+
+        <table class="table table-bordered table-striped mt-2 centered">
+            <thead>
+                <tr>
+                    <th>OrderId</th>
+                    <th>Description</th>
+                    <th>Ordered from</th>
+                    <th>Carrier</th>
+                    <th>Order Placed date</th>
+                    <th>Delivery date</th>
+                    <th>Cost</th>
+                    <th>Shiping cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Order order in Model)
+                {
+                    var warn = "";
+
+                    if (DeliveredOrNah(order))
+                    {
+                        warn = "bg-success";
+                    }
+                    else
+                    {
+                        warn = "";
+                    }
+
+                    <tr>
+                        <td>@order.OrderId</td>
+                        <td>@order.Description</td>
+                        <td>@order.OrderedFrom</td>
+                        <td>@order.Carrier</td>
+                        <td>@order.OrderPlacedDate?.ToShortDateString()</td>
+                        <td class="@warn">@order.DeliveryDate?.ToShortDateString()</td>
+                        <td>$@String.Format("{0:0.00}", order.Cost)</td>
+                        <td>$@String.Format("{0:0.00}", order.ShipmentFee)</td>
+
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+
+    </div>
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>
-        Learn about <a href="https://leichtag.org/7-things-can-address-hunger-community/">
-            how you we help counter hunger in your community with your help
-        </a>.
-    </p>
-    <br>
-    <h2>Track Your Orders</h2>
-    <p>
-        A census conducted by the Oregon Department of Human Services in 2009 showed that
-        of the 343,100 residents in Lane County, 49,357 rely on food stamps. Many residents
-        living in Lane County struggle to provide for themselves and their families. In many
-        parts of Oregon the production of food is switching from mainstream distribution
-        through industries to local food sourcing.
-    </p>
-    <br>
-    <hr />
-    <a href="/Home/Add">Add Shipment</a><br />
-    @*<a href="/Info/Link">LINKS</a> <br />*@
-
-</div>
 <hr />

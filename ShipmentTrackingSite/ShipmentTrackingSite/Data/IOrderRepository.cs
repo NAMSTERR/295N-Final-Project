@@ -11,6 +11,9 @@ namespace ShipmentTrackingSite.Data
         public Order AddOrder();
 
         public Order AddToDb(Order addIt);
+
+        IQueryable<Order> Orders { get; }
+
     }
 }
 
