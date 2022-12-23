@@ -21,10 +21,10 @@ namespace ShipmentTrackingSite.Data
             }
         }
 
-        public Order AddOrder()
-        {
-            throw new NotImplementedException();
-        }
+        //public Order AddOrder()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public Order AddToDb(Order addIt)
         {

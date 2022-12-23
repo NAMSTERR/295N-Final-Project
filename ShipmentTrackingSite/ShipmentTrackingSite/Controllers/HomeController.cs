@@ -39,6 +39,33 @@ public class HomeController : Controller
         return View(orders);
     }
 
+    [HttpPost]
+    public IActionResult Index(string carrier, string orderedFrom)
+    {
+        //ViewBag.FV = 0;
+        //return RedirectToAction("OrderTable");
+        List<Order> orders = null;
+
+        if (orderedFrom != null && carrier != null)
+        {
+            orders = (from o in repo.Orders where o.OrderedFrom == orderedFrom && o.Carrier == carrier select o).ToList();
+        }
+
+        else if (orderedFrom != null)
+        {
+            orders = (from o in repo.Orders where o.OrderedFrom == orderedFrom select o).ToList();
+        }
+
+        else if (carrier != null)
+        {
+            orders = (from c in repo.Orders where c.Carrier == carrier select c).ToList();
+
+        }
+
+
+        return View(orders);
+    }
+
 
     [HttpGet]
     public IActionResult Add()

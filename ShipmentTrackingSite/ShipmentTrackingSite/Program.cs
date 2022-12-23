@@ -1,7 +1,7 @@
 ﻿using ShipmentTrackingSite.Data;
 using ShipmentTrackingSite;
 using Microsoft.EntityFrameworkCore;
-
+using ShipmentSiteTest;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +10,8 @@ var connectionString = builder.Configuration.GetConnectionString("ConnectionStri
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+//builder.Services.AddTransient<IOrderRepository, FakeRepo>();
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllersWithViews();
 
