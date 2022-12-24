@@ -1,14 +1,12 @@
 ﻿using System.Diagnostics;
-using ShipmentTrackingSite.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using ShipmentTrackingSite.Data;
-
+using ShipmentTrackingSite.Models;
+using Microsoft.EntityFrameworkCore;
 namespace ShipmentTrackingSite.Controllers;
 
 public class HomeController : Controller
 {
-
     private readonly ILogger<HomeController> _logger;
     IOrderRepository repo;
 
@@ -35,7 +33,6 @@ public class HomeController : Controller
         //ViewBag.FV = 0;
         //return RedirectToAction("OrderTable");
         List<Order> orders = repo.Orders.ToList<Order>();
-
         return View(orders);
     }
 
@@ -62,10 +59,8 @@ public class HomeController : Controller
 
         }
 
-
         return View(orders);
     }
-
 
     [HttpGet]
     public IActionResult Add()

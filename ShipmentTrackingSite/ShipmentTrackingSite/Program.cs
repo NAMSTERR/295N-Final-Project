@@ -1,19 +1,21 @@
 ﻿using ShipmentTrackingSite.Data;
 using ShipmentTrackingSite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using ShipmentSiteTest;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("ConnectionString");
+var ConnectionString = builder.Configuration.GetConnectionString("ConnectionString");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+    options.UseMySql(ConnectionString, ServerVersion.AutoDetect(ConnectionString)));
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 //builder.Services.AddTransient<IOrderRepository, FakeRepo>();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 
