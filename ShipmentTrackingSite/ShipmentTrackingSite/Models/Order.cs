@@ -7,15 +7,6 @@ namespace ShipmentTrackingSite.Models
 {
     public class Order
     {
-        //order.description
-        //order.orderedFrom AKA amazon
-        //order.carrier AKA Fedex
-        //order.orderPlacedDate
-        //order.expectedDel
-        //order.cost
-        //order.shipmentFee
-        //orderID
-
         public int OrderId { get; set; }
 
         [Required(ErrorMessage = "Please enter a description.")]
@@ -38,8 +29,6 @@ namespace ShipmentTrackingSite.Models
 
         [Required(ErrorMessage = "Please enter the shipment fee.")]
         public Decimal? ShipmentFee { get; set; }
-
-
     }
 }
 

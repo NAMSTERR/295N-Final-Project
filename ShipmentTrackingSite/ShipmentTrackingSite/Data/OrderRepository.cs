@@ -21,11 +21,6 @@ namespace ShipmentTrackingSite.Data
             }
         }
 
-        //public Order AddOrder()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         public Order AddToDb(Order addIt)
         {
             context.Orders.Add(addIt);
